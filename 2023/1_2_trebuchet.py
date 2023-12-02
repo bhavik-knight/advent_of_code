@@ -17,9 +17,8 @@ def main():
         "nine": 9,
     }
 
-
     # get the file path
-    file_path: str = Path(__file__).parent.joinpath('1_1_input.txt')
+    file_path: str = Path(__file__).parent.joinpath("1_1_input.txt")
 
     # get all lines from the file
     lines = get_file_data(file_path)
@@ -95,10 +94,9 @@ def get_first_last_digits(data: str, mapping_dict: dict) -> [int, int]:
 
 
 def get_file_data(file_path: str) -> str:
-    result: list = list()
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         return file.readlines()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,2 +1,4 @@
 __pycache__
-*.txt
+tmp*.txt
+temp*.txt
+o*.txt
