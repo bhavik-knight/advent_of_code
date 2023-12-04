@@ -1,4 +1,7 @@
 import re
+import sys
+sys.path.insert(0, "../")
+
 from typing import List
 from pathlib import Path
 from read_input_file import get_lines
