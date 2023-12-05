@@ -1,10 +1,6 @@
 import re
-import sys
-sys.path.insert(0, "../")
-
-from typing import List
 from pathlib import Path
-from read_input_file import get_lines
+from typing import List
 
 
 def main():
@@ -21,7 +17,6 @@ def main():
     total = sum(flatten_list(map(lambda x: x[1], part_numbers)))
     print(f"Total: {total}")
     print()
-
 
     # part 2
     # for only gear ratio we need only * symbol having 2 number around it
@@ -76,7 +71,6 @@ def find_numbers(index: int, line_number: int, lines: list) -> List[int]:
         current_line = lines[line_number]
         return {"First/Last": current_line_numbers(index, current_line)}
 
-
     prv_line = lines[line_number - 1]
     prv_numbers = prv_nxt_line_numbers(index, prv_line)
     numbers["prv"] = prv_numbers
@@ -91,12 +85,12 @@ def find_numbers(index: int, line_number: int, lines: list) -> List[int]:
 
     return numbers
 
-def prv_nxt_line_numbers(index:int, line: int) -> List[int]:
+
+def prv_nxt_line_numbers(index: int, line: int) -> List[int]:
     numbers = list()
 
     # if current char is a digit, we must find start and end of this digit
     if line[index].isdigit():
-
         # find the start of digit
         prv = index - 1
         while prv >= 0:
@@ -112,7 +106,7 @@ def prv_nxt_line_numbers(index:int, line: int) -> List[int]:
                 nxt += 1
             else:
                 break
-        numbers.append(int(line[prv + 1: nxt]))
+        numbers.append(int(line[prv + 1 : nxt]))
 
     # otherwise, number is at either the entirely on the left or enitrely on the right
     # for this we can use chec current_line_numbers function, as it does exactly this task
@@ -122,7 +116,7 @@ def prv_nxt_line_numbers(index:int, line: int) -> List[int]:
     return numbers
 
 
-def current_line_numbers(index:int, line:int) -> List[int]:
+def current_line_numbers(index: int, line: int) -> List[int]:
     # we can have 2 numbers, one on the left and one on the right for the sybmol in the current line
     numbers = list()
 
@@ -139,7 +133,7 @@ def current_line_numbers(index:int, line:int) -> List[int]:
             break
 
     if number_found:
-        prv_number = line[prv + 1:index]
+        prv_number = line[prv + 1 : index]
         numbers.append(int(prv_number))
 
     # find the number on the right
@@ -153,7 +147,7 @@ def current_line_numbers(index:int, line:int) -> List[int]:
             break
 
     if number_found:
-        nxt_number = line[index + 1: nxt]
+        nxt_number = line[index + 1 : nxt]
         numbers.append(int(nxt_number))
 
     return numbers
@@ -178,6 +172,10 @@ def flatten_list(l: list) -> List[int]:
             result.append(item)
     return result
 
+
+def get_lines(file_name: str) -> List[str]:
+    with open(file_name, "r") as f:
+        return f.readlines()
 
 
 if __name__ == "__main__":
