@@ -3,3 +3,4 @@ tmp*.txt
 temp*.txt
 o*.txt
 .vscode
+.idea
